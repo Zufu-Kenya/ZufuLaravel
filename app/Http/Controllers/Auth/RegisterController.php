@@ -67,11 +67,5 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-        // $credentials = $data->only('email', 'password');
-        // Auth::attempt($credentials);
-        // $data->session()->regenerate();
-
-        // return redirect()->route('/')->withSuccess('You have registered and logged in successfully');
     }
 }
