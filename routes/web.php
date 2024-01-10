@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +18,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(LoginRegisterController::class)->group(function () {
-    Route::get('/register', 'register')->name('register');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/login', 'login')->name('login');
-    Route::post('authenticate', 'authenticate')->name('authenticate');
-    Route::get('/', 'dashboard')->name('dashboard');
-    Route::post('/logout', 'logout')->name('logout');
-});
+// Route::controller(LoginRegisterController::class)->group(function () {
+//     Route::get('/register', 'register')->name('register');
+//     Route::post('/store', 'store')->name('store');
+//     Route::get('/login', 'login')->name('login');
+//     Route::post('authenticate', 'authenticate')->name('authenticate');
+//     Route::get('/', 'dashboard')->name('dashboard');
+//     Route::post('/logout', 'logout')->name('logout');
+// });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resources([
+    'roles' => RoleController::class,
+    'users' => UserController::class,
+    'products' => ProductController::class,
+]);
