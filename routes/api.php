@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ConditionAPIController;
 use App\Http\Controllers\API\ProductAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/products', [ProductAPIController::class, 'index']);
+
+Route::get('/product-conditions', [ConditionAPIController::class, 'index']);

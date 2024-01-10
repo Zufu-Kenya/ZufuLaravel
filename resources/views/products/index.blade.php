@@ -14,6 +14,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
+                <th scope="col">Condition</th>
                 <th scope="col">Image</th>
                 <th scope="col">Action</th>
                 </tr>
@@ -25,6 +26,7 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
+                    <td>{{ $product->condition ? $product->condition->name : 'N/A' }}</td>
                     <td>
                         @if ($product->image)
                             <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">

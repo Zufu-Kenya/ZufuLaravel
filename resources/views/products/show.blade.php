@@ -38,6 +38,13 @@
                     </div>
 
                     <div class="row">
+                        <label for="condition" class="col-md-4 col-form-label text-md-end text-start"><strong>Condition:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->condition ? $product->condition->name : 'N/A' }}
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <label for="image" class="col-md-4 col-form-label text-md-end text-start"><strong>Image:</strong></label>
                         <div class="col-md-6">
                             @if ($product->image)

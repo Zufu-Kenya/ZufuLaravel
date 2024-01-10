@@ -50,6 +50,23 @@
                     </div>
 
                     <div class="mb-3 row">
+                        <label for="condition_id" class="col-md-4 col-form-label text-md-end text-start">Condition</label>
+                        <div class="col-md-6">
+                            <select class="form-control @error('condition_id') is-invalid @enderror" id="condition_id" name="condition_id">
+                                <option value="" selected disabled>Select Condition</option>
+                                @foreach ($conditions as $condition)
+                                    <option value="{{ $condition->id }}" {{ old('condition_id', $product->condition_id) == $condition->id ? 'selected' : '' }}>
+                                        {{ $condition->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('condition_id'))
+                                <span class="text-danger">{{ $errors->first('condition_id') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
                         <label for="image" class="col-md-4 col-form-label text-md-end text-start">Image</label>
                         <div class="col-md-6">
                             <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequests\StoreProductRequest;
 use App\Http\Requests\ProductRequests\UpdateProductRequest;
+use App\Models\Condition;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -35,7 +36,9 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        return view('products.create');
+        $conditions = Condition::all();
+
+        return view('products.create', compact('conditions'));
     }
 
     /**
