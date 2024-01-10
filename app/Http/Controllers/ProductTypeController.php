@@ -2,21 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProductTypeRequest;
-use App\Http\Requests\UpdateProductTypeRequest;
+use App\Http\Requests\ProductTypeRequests\StoreProductTypeRequest;
+use App\Http\Requests\ProductTypeRequests\UpdateProductTypeRequest;
 use App\Models\ProductType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class ProductTypeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:create-productType|edit-productType|delete-productType', ['only' => ['index', 'show']]);
+        $this->middleware('permission:create-productType|edit-productType', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit-productType', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete-productType', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
         return view('productTypes.index', [
-            'productType' => ProductType::latest()->paginate(5),
+            'productTypes' => ProductType::latest()->paginate(5),
         ]);
     }
 

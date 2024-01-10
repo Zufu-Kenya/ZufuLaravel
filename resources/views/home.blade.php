@@ -37,6 +37,10 @@
                         <a class="btn btn-warning" href="{{ route('blogs.index') }}">
                             <i class="bi bi-book"></i> Manage Blogs</a>
                     @endcanany
+                    @canany(['create-productType', 'edit-productType', 'delete-productType'])
+                        <a class="btn btn-warning" href="{{ route('productTypes.index') }}">
+                            <i class="bi bi-box"></i> Manage Product Types</a>
+                    @endcanany
                     <p>&nbsp;</p>
                 </div>
             </div>

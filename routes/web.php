@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
         'products' => ProductController::class,
         'conditions' => ConditionController::class,
         'blogs' => BlogsController::class,
+        'productTypes' => ProductTypeController::class,
     ]);
 });
 
