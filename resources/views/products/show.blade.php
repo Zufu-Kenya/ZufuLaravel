@@ -29,6 +29,24 @@
                             {{ $product->description }}
                         </div>
                     </div>
+
+                    <div class="row">
+                        <label for="price" class="col-md-4 col-form-label text-md-end text-start"><strong>Price:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->price }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="image" class="col-md-4 col-form-label text-md-end text-start"><strong>Image:</strong></label>
+                        <div class="col-md-6">
+                            @if ($product->image)
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" style="max-width: 100%;">
+                            @else
+                                No Image
+                            @endif
+                        </div>
+                    </div>
         
             </div>
         </div>

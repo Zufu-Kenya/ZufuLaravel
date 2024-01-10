@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('products.update', $product->id) }}" method="post">
+                <form action="{{ route('products.update', $product->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
 
@@ -35,6 +35,26 @@
                             <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ $product->description }}</textarea>
                             @if ($errors->has('description'))
                                 <span class="text-danger">{{ $errors->first('description') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="price" class="col-md-4 col-form-label text-md-end text-start">Price</label>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ $product->price }}">
+                            @if ($errors->has('price'))
+                                <span class="text-danger">{{ $errors->first('price') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="image" class="col-md-4 col-form-label text-md-end text-start">Image</label>
+                        <div class="col-md-6">
+                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                            @if ($errors->has('image'))
+                                <span class="text-danger">{{ $errors->first('image') }}</span>
                             @endif
                         </div>
                     </div>
