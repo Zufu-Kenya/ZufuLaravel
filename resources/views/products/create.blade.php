@@ -66,18 +66,18 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="productType_id" class="col-md-4 col-form-label text-md-end text-start">Product Type</label>
+                        <label for="brand_id" class="col-md-4 col-form-label text-md-end text-start">Brand</label>
                         <div class="col-md-6">
-                            <select class="form-control @error('productType_id') is-invalid @enderror" id="productType_id" name="productType_id">
-                                <option value="" selected disabled>Select Product Type</option>
-                                @foreach ($productTypes as $productType)
-                                    <option value="{{ $productType->id }}" {{ old('productType_id') == $productType->id ? 'selected' : '' }}>
-                                        {{ $productType->name }}
+                            <select class="form-control @error('brand_id') is-invalid @enderror" id="brand_id" name="brand_id">
+                                <option value="" selected disabled>Select Brand</option>
+                                @foreach ($brands as $brand)
+                                    <option value="{{ $brand->id }}" {{ old('brand_id') == $brand->id ? 'selected' : '' }}>
+                                        {{ $brand->name }}
                                     </option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('productType_id'))
-                                <span class="text-danger">{{ $errors->first('productType_id') }}</span>
+                            @if ($errors->has('brand_id'))
+                                <span class="text-danger">{{ $errors->first('brand_id') }}</span>
                             @endif
                         </div>
                     </div>

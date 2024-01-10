@@ -45,12 +45,11 @@
                     </div>
 
                     <div class="row">
-                        <label for="productType" class="col-md-4 col-form-label text-md-end text-start"><strong>Product Type:</strong></label>
+                        <label for="brand" class="col-md-4 col-form-label text-md-end text-start"><strong>Brand:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
-                            {{ $product->productType ? $product->productType->name : 'N/A' }}
+                            {{ $product->brand ? $product->brand->name : 'N/A' }}
                         </div>
                     </div>
-
                     <div class="row">
                         <label for="image" class="col-md-4 col-form-label text-md-end text-start"><strong>Image:</strong></label>
                         <div class="col-md-6">

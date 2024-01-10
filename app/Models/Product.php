@@ -13,7 +13,12 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'description', 'price', 'image', 'condition_id', 'productType_id',
+        'name',
+        'description',
+        'price',
+        'image',
+        'condition_id',
+        'brand_id',
     ];
 
     public function condition(): BelongsTo
@@ -21,8 +26,8 @@ class Product extends Model
         return $this->belongsTo(Condition::class);
     }
 
-    public function productType(): BelongsTo
+    public function brand(): BelongsTo
     {
-        return $this->belongsTo(ProductType::class);
+        return $this->belongsTo(Brand::class);
     }
 }

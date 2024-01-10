@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\ProductRequests;
+namespace App\Http\Requests\BrandRequests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductRequest extends FormRequest
+class UpdateBrandRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,6 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'price' => 'required|numeric',
-            'condition_id' => 'required|exists:conditions,id',
-            'brand_id' => 'required|exists:brands,id',
         ];
     }
 }

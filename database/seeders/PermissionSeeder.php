@@ -34,6 +34,9 @@ class PermissionSeeder extends Seeder
             'create-productType',
             'edit-productType',
             'delete-productType',
+            'create-brand',
+            'edit-brand',
+            'delete-brand',
         ];
 
         foreach ($permissions as $permission) {

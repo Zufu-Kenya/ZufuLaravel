@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
@@ -33,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
         'conditions' => ConditionController::class,
         'blogs' => BlogsController::class,
         'productTypes' => ProductTypeController::class,
+        'brands' => BrandController::class,
     ]);
 });
 

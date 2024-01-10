@@ -15,7 +15,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
                 <th scope="col">Condition</th>
-                <th scope="col">Product Type</th>
+                <th scope="col">Brand</th>
                 <th scope="col">Image</th>
                 <th scope="col">Action</th>
                 </tr>
@@ -28,7 +28,7 @@
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->condition ? $product->condition->name : 'N/A' }}</td>
-                    <td>{{ $product->productType ? $product->productType->name : 'N/A' }}</td>
+                    <td>{{ $product->brand ? $product->brand->name : 'N/A' }}</td>
                     <td>
                         @if ($product->image)
                             <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">

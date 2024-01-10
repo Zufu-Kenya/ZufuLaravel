@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequests\StoreProductRequest;
 use App\Http\Requests\ProductRequests\UpdateProductRequest;
+use App\Models\Brand;
 use App\Models\Condition;
 use App\Models\Product;
-use App\Models\ProductType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -38,9 +38,9 @@ class ProductController extends Controller
     public function create(): View
     {
         $conditions = Condition::all();
-        $productTypes = ProductType::all();
+        $brands = Brand::all();
 
-        return view('products.create', compact('conditions', 'productTypes'));
+        return view('products.create', compact('conditions', 'brands'));
     }
 
     /**
@@ -76,12 +76,12 @@ class ProductController extends Controller
     public function edit(Product $product): View
     {
         $conditions = Condition::all();
-        $productTypes = ProductType::all();
+        $brands = Brand::all();
 
         return view('products.edit', [
             'product' => $product,
             'conditions' => $conditions,
-            'productTypes' => $productTypes,
+            'brands' => $brands,
         ]);
     }
 
