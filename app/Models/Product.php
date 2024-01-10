@@ -13,11 +13,16 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'description', 'price', 'image', 'condition_id',
+        'name', 'description', 'price', 'image', 'condition_id', 'productType_id',
     ];
 
     public function condition(): BelongsTo
     {
         return $this->belongsTo(Condition::class);
+    }
+
+    public function productType(): BelongsTo
+    {
+        return $this->belongsTo(ProductType::class);
     }
 }

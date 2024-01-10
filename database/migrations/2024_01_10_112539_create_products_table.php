@@ -17,6 +17,7 @@ return new class() extends Migration {
             $table->string('image');
             $table->decimal('price', 8, 2);
             $table->foreignId('condition_id')->nullable();
+            $table->foreignId('productType_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

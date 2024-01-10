@@ -66,6 +66,23 @@
                     </div>
 
                     <div class="mb-3 row">
+                        <label for="productType_id" class="col-md-4 col-form-label text-md-end text-start">Product Type</label>
+                        <div class="col-md-6">
+                            <select class="form-control @error('productType_id') is-invalid @enderror" id="productType_id" name="productType_id">
+                                <option value="" selected disabled>Select Product Type</option>
+                                @foreach ($productTypes as $productType)
+                                    <option value="{{ $productType->id }}" {{ old('productType_id') == $productType->id ? 'selected' : '' }}>
+                                        {{ $productType->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('productType_id'))
+                                <span class="text-danger">{{ $errors->first('productType_id') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
                         <label for="image" class="col-md-4 col-form-label text-md-end text-start">image</label>
                         <div class="col-md-6">
                         <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
