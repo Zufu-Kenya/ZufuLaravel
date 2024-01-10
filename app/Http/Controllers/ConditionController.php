@@ -80,7 +80,10 @@ class ConditionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Condition $condition)
+    public function destroy(Condition $condition): RedirectResponse
     {
+        $condition->delete();
+
+        return redirect()->route('conditions.index')->withSuccess('Conditions deleted successfully');
     }
 }

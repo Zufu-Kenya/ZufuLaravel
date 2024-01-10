@@ -31,7 +31,11 @@
                     @endcanany
                     @canany(['create-condition', 'edit-condition', 'delete-condition'])
                         <a class="btn btn-warning" href="{{ route('conditions.index') }}">
-                            <i class="bi bi-bag"></i> Manage Conditions</a>
+                            <i class="bi bi-star"></i> Manage Conditions</a>
+                    @endcanany
+                    @canany(['create-blog', 'edit-blog', 'delete-blog'])
+                        <a class="btn btn-warning" href="{{ route('blogs.index') }}">
+                            <i class="bi bi-book"></i> Manage Blogs</a>
                     @endcanany
                     <p>&nbsp;</p>
                 </div>

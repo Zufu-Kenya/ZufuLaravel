@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
@@ -29,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
         'users' => UserController::class,
         'products' => ProductController::class,
         'conditions' => ConditionController::class,
+        'blogs' => BlogsController::class,
     ]);
 });
 
