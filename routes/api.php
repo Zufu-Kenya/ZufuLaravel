@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\BlogAPIController;
 use App\Http\Controllers\API\BrandAPIController;
+use App\Http\Controllers\API\CategoryAPIController;
 use App\Http\Controllers\API\ConditionAPIController;
 use App\Http\Controllers\API\ProductAPIController;
 use Illuminate\Http\Request;
@@ -29,3 +30,5 @@ Route::get('/product-conditions', [ConditionAPIController::class, 'index']);
 Route::get('/blogs', [BlogAPIController::class, 'index']);
 
 Route::get('/brands', [BrandAPIController::class, 'index']);
+
+Route::get('/categories', [CategoryAPIController::class, 'index']);
