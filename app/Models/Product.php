@@ -19,6 +19,7 @@ class Product extends Model
         'image',
         'condition_id',
         'brand_id',
+        'category_id',
     ];
 
     public function condition(): BelongsTo
@@ -29,5 +30,10 @@ class Product extends Model
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 }

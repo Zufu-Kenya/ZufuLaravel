@@ -50,6 +50,14 @@
                             {{ $product->brand ? $product->brand->name : 'N/A' }}
                         </div>
                     </div>
+
+                    <div class="row">
+                        <label for="category" class="col-md-4 col-form-label text-md-end text-start"><strong>Category:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->category ? $product->category->name : 'N/A' }}
+                        </div>
+                    </div>
+
                     <div class="row">
                         <label for="image" class="col-md-4 col-form-label text-md-end text-start"><strong>Image:</strong></label>
                         <div class="col-md-6">

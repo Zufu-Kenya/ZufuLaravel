@@ -28,6 +28,7 @@ class StoreProductRequest extends FormRequest
             'price' => 'required|numeric',
             'condition_id' => 'required|exists:conditions,id',
             'brand_id' => 'required|exists:brands,id',
+            'category_id' => 'required|exists:categories,id',
         ];
     }
 }

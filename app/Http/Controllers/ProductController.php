@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequests\StoreProductRequest;
 use App\Http\Requests\ProductRequests\UpdateProductRequest;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
@@ -39,8 +40,9 @@ class ProductController extends Controller
     {
         $conditions = Condition::all();
         $brands = Brand::all();
+        $categories = Category::all();
 
-        return view('products.create', compact('conditions', 'brands'));
+        return view('products.create', compact('conditions', 'brands', 'categories'));
     }
 
     /**
@@ -77,11 +79,13 @@ class ProductController extends Controller
     {
         $conditions = Condition::all();
         $brands = Brand::all();
+        $categories = Category::all();
 
         return view('products.edit', [
             'product' => $product,
             'conditions' => $conditions,
             'brands' => $brands,
+            'categories' => $categories,
         ]);
     }
 

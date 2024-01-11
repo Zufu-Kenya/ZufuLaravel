@@ -10,10 +10,8 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-        Schema::create('product_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreignId('category_id')->nullable();
         });
     }
 
@@ -22,6 +20,9 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_types');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropColumn('category_id');
+        });
     }
 };

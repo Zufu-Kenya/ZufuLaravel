@@ -12,7 +12,7 @@ class ProductAPIController extends Controller
      */
     public function index()
     {
-        $products = Product::with('condition', 'brand')->get();
+        $products = Product::with('condition', 'brand', 'category')->get();
 
         return response()->json($products, 200);
     }
