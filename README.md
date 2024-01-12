@@ -25,11 +25,17 @@ The following are the endpoints;
 
 ####  Products: GET '/api/products'
 
-#### Product Categories: GET '/api/categories'
+#### Categories: GET '/api/categories'
 
-#### Product Brands: GET '/api/brands'
+#### Conditions: GET '/api/conditions'
+
+#### Brands: GET '/api/brands'
 
 #### Blogs: GET '/api/blogs'
 
-#### Product Conditions: GET '/api/product-conditions'
+#### Products by Categories: GET '/api/products-categories/{categoryName}'
+
+#### Products by Conditions: GET '/api/products-conditions/{conditionName}'
+
+#### Products by Brands: GET '/api/products-brands/{brandName}'
  

@@ -25,10 +25,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/products', [ProductAPIController::class, 'index']);
 
-Route::get('/product-conditions', [ConditionAPIController::class, 'index']);
+Route::get('/conditions', [ConditionAPIController::class, 'index']);
 
 Route::get('/blogs', [BlogAPIController::class, 'index']);
 
 Route::get('/brands', [BrandAPIController::class, 'index']);
 
 Route::get('/categories', [CategoryAPIController::class, 'index']);
+
+Route::get('/products-categories/{categoryName}', [ProductAPIController::class, 'getByCategory']);
+
+Route::get('/products-brands/{brandName}', [ProductAPIController::class, 'getByBrand']);
+
+Route::get('/products-conditions/{conditionName}', [ProductAPIController::class, 'getByCondition']);
