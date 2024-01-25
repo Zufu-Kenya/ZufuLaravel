@@ -23,12 +23,24 @@ class RoleSeeder extends Seeder
             'create-product',
             'edit-product',
             'delete-product',
+            'create-blog',
+            'edit-blog',
+            'delete-blog',
+            'create-brand',
+            'edit-brand',
+            'delete-brand',
         ]);
 
         $productManager->givePermissionTo([
             'create-product',
             'edit-product',
             'delete-product',
+            'create-condition',
+            'edit-condition',
+            'delete-condition',
+            'create-category',
+            'edit-category',
+            'delete-category',
         ]);
     }
 }
