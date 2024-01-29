@@ -38,6 +38,13 @@
                     </div>
 
                     <div class="row">
+                        <label for="quantity" class="col-md-4 col-form-label text-md-end text-start"><strong>quantity:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->quantity }}
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <label for="condition" class="col-md-4 col-form-label text-md-end text-start"><strong>Condition:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             {{ $product->condition ? $product->condition->name : 'N/A' }}
@@ -59,19 +66,21 @@
                     </div>
 
                     <div class="row">
-                        <label for="image" class="col-md-4 col-form-label text-md-end text-start"><strong>Image:</strong></label>
+                        <label for="images" class="col-md-4 col-form-label text-md-end text-start"><strong>Images:</strong></label>
                         <div class="col-md-6">
-                            @if ($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" style="max-width: 100%;">
+                            @if ($product->productImages->isNotEmpty())
+                                @foreach ($product->productImages as $image)
+                                    <img src="{{ asset('storage/' . $image->image) }}" alt="product Images" style="max-width: 100%;">
+                                @endforeach
                             @else
-                                No Image
+                                No Images
                             @endif
                         </div>
                     </div>
-        
+
             </div>
         </div>
-    </div>    
+    </div>
 </div>
-    
+
 @endsection

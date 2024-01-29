@@ -50,6 +50,16 @@
                     </div>
 
                     <div class="mb-3 row">
+                        <label for="quantity" class="col-md-4 col-form-label text-md-end text-start">quantity</label>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control @error('quantity') is-invalid @enderror" id="quantity" name="quantity" value="{{ $product->quantity }}">
+                            @if ($errors->has('quantity'))
+                                <span class="text-danger">{{ $errors->first('quantity') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
                         <label for="condition_id" class="col-md-4 col-form-label text-md-end text-start">Condition</label>
                         <div class="col-md-6">
                             <select class="form-control @error('condition_id') is-invalid @enderror" id="condition_id" name="condition_id">
@@ -101,23 +111,23 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="image" class="col-md-4 col-form-label text-md-end text-start">Image</label>
+                        <label for="images" class="col-md-4 col-form-label text-md-end text-start">images</label>
                         <div class="col-md-6">
-                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
-                            @if ($errors->has('image'))
-                                <span class="text-danger">{{ $errors->first('image') }}</span>
+                            <input type="file" class="form-control @error('images.*') is-invalid @enderror" id="images" name="images[]" multiple>
+                            @if ($errors->has('images'))
+                                <span class="text-danger">{{ $errors->first('images') }}</span>
                             @endif
                         </div>
                     </div>
-                    
+
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Update">
                     </div>
-                    
+
                 </form>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
-    
+
 @endsection

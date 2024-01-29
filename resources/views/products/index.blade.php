@@ -17,6 +17,7 @@
                 <th scope="col">Condition</th>
                 <th scope="col">Brand</th>
                 <th scope="col">Categroy</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Image</th>
                 <th scope="col">Action</th>
                 </tr>
@@ -31,9 +32,12 @@
                     <td>{{ $product->condition ? $product->condition->name : 'N/A' }}</td>
                     <td>{{ $product->brand ? $product->brand->name : 'N/A' }}</td>
                     <td>{{ $product->category ? $product->category->name : 'N/A' }}</td>
+                    <td>{{ $product->quantity }}</td>
                     <td>
-                        @if ($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
+                        @if ($product->productImages->isNotEmpty())
+                            @foreach ($product->productImages as $image)
+                                <img src="{{ asset('storage/' . $image->image) }}" alt="product Image" style="max-width: 100px; max-height: 100px;">
+                            @endforeach
                         @else
                             No Image
                         @endif

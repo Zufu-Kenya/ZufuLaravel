@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -52,12 +53,9 @@ class ProductController extends Controller
     {
         $data = $request->validated();
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('product_images', 'public');
-            $data['image'] = $imagePath;
-        }
+        $product = Product::create($data);
 
-        Product::create($data);
+        $this->uploadImages($request, $product);
 
         return redirect()->route('products.index')->withSuccess('Successfully created a new product');
     }
@@ -96,18 +94,23 @@ class ProductController extends Controller
     {
         $data = $request->validated();
 
-        if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
-            }
-
-            $imagePath = $request->file('image')->store('product_images', 'public');
-            $data['image'] = $imagePath;
-        }
-
         $product->update($data);
 
+        $this->uploadImages($request, $product);
+
         return redirect()->back()->withSuccess('Product updated successfully');
+    }
+
+    private function uploadImages($request, $product)
+    {
+        $product->productImages()->delete();
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imagePath = $image->store('product_images', 'public');
+                ProductImage::create(['image' => $imagePath, 'product_id' => $product->id]);
+            }
+        }
     }
 
     /**
