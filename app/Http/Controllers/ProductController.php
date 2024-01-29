@@ -8,13 +8,15 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Product;
-use App\Models\ProductImage;
+use App\Traits\UploadImagesTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProductController extends Controller
 {
+    use UploadImagesTrait;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -99,18 +101,6 @@ class ProductController extends Controller
         $this->uploadImages($request, $product);
 
         return redirect()->back()->withSuccess('Product updated successfully');
-    }
-
-    private function uploadImages($request, $product)
-    {
-        $product->productImages()->delete();
-
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $imagePath = $image->store('product_images', 'public');
-                ProductImage::create(['image' => $imagePath, 'product_id' => $product->id]);
-            }
-        }
     }
 
     /**
