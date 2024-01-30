@@ -4,6 +4,7 @@ use App\Http\Controllers\API\BlogAPIController;
 use App\Http\Controllers\API\BrandAPIController;
 use App\Http\Controllers\API\CategoryAPIController;
 use App\Http\Controllers\API\ConditionAPIController;
+use App\Http\Controllers\API\CustomerAPIController;
 use App\Http\Controllers\API\ProductAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,22 +20,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::prefix('customer')->group(function () {
+        Route::post('/register', [CustomerAPIController::class, 'register']);
+        Route::post('/login', [CustomerAPIController::class, 'login']);
+
+        Route::group([], function () {
+            Route::get('/logout', [CustomerAPIController::class, 'logout']);
+            Route::put('/{customer}', [CustomerAPIController::class, 'update']);
+            Route::delete('/{customer}', [CustomerAPIController::class, 'destroy']);
+        });
+    });
 });
 
-Route::get('/products', [ProductAPIController::class, 'index']);
+Route::controller(ProductAPIController::class)->group(function () {
+    Route::get('/products', 'index');
+    Route::get('/products-categories/{categoryName}', 'getByCategory');
+    Route::get('/products-brands/{brandName}', 'getByBrand');
+    Route::get('/products-conditions/{conditionName}', 'getByCondition');
+});
 
-Route::get('/conditions', [ConditionAPIController::class, 'index']);
+Route::controller(ConditionAPIController::class)->group(function () {
+    Route::get('/conditions', 'index');
+});
 
-Route::get('/blogs', [BlogAPIController::class, 'index']);
+Route::controller(BlogAPIController::class)->group(function () {
+    Route::get('/blogs', 'index');
+});
 
-Route::get('/brands', [BrandAPIController::class, 'index']);
+Route::controller(BrandAPIController::class)->group(function () {
+    Route::get('/brands', 'index');
+});
 
-Route::get('/categories', [CategoryAPIController::class, 'index']);
-
-Route::get('/products-categories/{categoryName}', [ProductAPIController::class, 'getByCategory']);
-
-Route::get('/products-brands/{brandName}', [ProductAPIController::class, 'getByBrand']);
-
-Route::get('/products-conditions/{conditionName}', [ProductAPIController::class, 'getByCondition']);
+Route::controller(CategoryAPIController::class)->group(function () {
+    Route::get('/categories', 'index');
+});

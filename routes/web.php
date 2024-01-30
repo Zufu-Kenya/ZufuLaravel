@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConditionController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -35,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
         'blogs' => BlogsController::class,
         'brands' => BrandController::class,
         'categories' => CategoryController::class,
+        'customers' => CustomerController::class,
     ]);
 });
 
